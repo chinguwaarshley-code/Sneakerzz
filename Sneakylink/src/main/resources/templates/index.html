@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a0d">
+  <title>SneakyLink — Find your next pair</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="SneakyLink home"><span class="brand-mark">S</span> SNEAKY<span>LINK</span></a>
+    <nav><a href="#shop">Shop all</a><a href="#story">Our standard</a></nav>
+    <div class="top-actions"><button class="text-btn" id="account-btn">Sign in</button><button class="cart-button" id="open-cart">Bag <span id="cart-count">0</span></button></div>
+  </header>
+
+  <main>
+    <section class="hero" id="story">
+      <div class="hero-copy"><p class="eyebrow"><span class="live-dot"></span> GOOD FORM. EVERY DAY.</p><h1>Find your<br>next <span>pair.</span></h1><p class="hero-sub">Thoughtful footwear for every way you move. Find your fit, make it yours, and take the long way home.</p><a class="button button-blue" href="#shop">Explore the collection <span>↘</span></a><p class="hero-note">FREE SHIPPING OVER $100 <i>·</i> EASY 30-DAY RETURNS</p></div>
+      <div class="hero-art"><div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div><div class="hero-image"></div><span class="hero-label label-top">01 / FORM MEETS FUNCTION</span><span class="hero-label label-bottom">MADE TO MOVE <span>↗</span></span><div class="hero-sticker">THE<br>DAILY<br>ROTATION<br><span>NO. 001</span></div></div>
+      <div class="hero-index">EST. 2024 <span>↗</span> 40° 43' 55.3"N</div>
+    </section>
+
+    <section class="ticker" aria-label="SneakyLink essentials"><div>MADE FOR MILES <b>✳</b> BUILT TO REPEAT <b>✳</b> FIND YOUR FORM <b>✳</b> MADE FOR MILES <b>✳</b> BUILT TO REPEAT <b>✳</b> FIND YOUR FORM <b>✳</b></div></section>
+
+    <section class="shop-section" id="shop">
+      <div class="section-heading"><div><p class="eyebrow">THE SNEAKYLINK EDIT</p><h2>In good company<span>.</span></h2></div><p class="product-count" id="result-count">Loading collection…</p></div>
+      <div class="shop-tools"><label class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Search styles, brands…" aria-label="Search products"></label><label class="select-wrap"><span>COLOR</span><select id="color-filter"><option value="">All colorways</option></select></label><label class="select-wrap"><span>MATERIAL</span><select id="material-filter"><option value="">All materials</option></select></label><label class="select-wrap"><span>SIZE</span><select id="size-filter"><option value="">All sizes</option></select></label></div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      <div class="empty-state hidden" id="empty-state"><span>↗</span><h3>No pairs found.</h3><p>Try changing a filter or search term.</p><button class="text-btn" id="clear-filters">Clear all filters</button></div>
+    </section>
+
+    <section class="manifesto"><div class="manifesto-number">SL—001</div><div><p class="eyebrow">LESS NOISE. MORE MILES.</p><h2>A little more<br><span>everyday.</span></h2></div><p>Good shoes don't need to shout. Just the right materials, a considered fit, and the kind of comfort that makes one more block feel like nothing.</p><a href="#shop" class="manifesto-arrow" aria-label="Shop collection">↗</a></section>
+  </main>
+  <footer><a class="brand" href="/"><span class="brand-mark">S</span> SNEAKY<span>LINK</span></a><span>GOOD FORM, EVERY DAY. © 2025 SNEAKYLINK</span><button class="text-btn manager-link" id="manager-link">TEAM ACCESS ↗</button></footer>
+
+  <div class="overlay hidden" id="auth-modal"><section class="modal auth-modal"><button class="modal-close" data-close="auth-modal" aria-label="Close">×</button><p class="eyebrow">WELCOME TO SNEAKYLINK</p><h2>Good to have<br>you <span>here.</span></h2><form id="auth-form"><label>Your name<input name="name" required autocomplete="name" placeholder="e.g. Alex Morgan"></label><label>I'm here as<select name="role" id="role-select"><option value="customer">Customer</option><option value="manager">Manager</option></select></label><label class="password-field hidden">Manager password<input name="password" type="password" autocomplete="current-password"></label><button class="button button-blue full-width" type="submit">Continue <span>→</span></button></form><p class="form-hint" id="auth-error"></p></section></div>
+
+  <div class="overlay hidden" id="cart-modal"><section class="modal side-modal"><button class="modal-close" data-close="cart-modal" aria-label="Close">×</button><p class="eyebrow">YOUR ROTATION</p><h2>The bag<span>.</span></h2><div class="cart-lines" id="cart-lines"></div><div class="cart-bottom"><div class="subtotal"><span>Subtotal</span><strong id="cart-subtotal">$0.00</strong></div><p>Shipping and taxes calculated at checkout.</p><button class="button button-blue full-width" id="checkout-button">Head to checkout <span>→</span></button></div></section></div>
+
+  <div class="overlay hidden" id="checkout-modal"><section class="modal checkout-modal"><button class="modal-close" data-close="checkout-modal" aria-label="Close">×</button><p class="eyebrow">ALMOST YOURS</p><h2>Make it <span>official.</span></h2><div id="checkout-content"><form id="checkout-form">
+    <div class="checkout-grid"><label>Full name<input name="customerName" required autocomplete="name"></label><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Phone<input name="phone" type="tel" required autocomplete="tel"></label></div>
+    <fieldset><legend>HOW SHOULD WE GET IT TO YOU?</legend><div class="fulfillment-options"><label class="choice"><input type="radio" name="fulfillment" value="delivery" checked><span>Home delivery <small>Arrives in 3–5 days</small></span></label><label class="choice"><input type="radio" name="fulfillment" value="pickup"><span>Store pickup <small>Free, ready tomorrow</small></span></label></div></fieldset>
+    <div id="address-fields" class="checkout-grid address-grid"><label class="span-two">Street address<input name="address" autocomplete="street-address" required></label><label>City<input name="city" autocomplete="address-level2" required></label><label>State / region<input name="region" autocomplete="address-level1" required></label><label>ZIP / postal code<input name="postalCode" autocomplete="postal-code" required></label></div>
+    <label>Choose a time <select id="schedule-select" required></select></label>
+    <fieldset><legend>PAYMENT · SECURE CHECKOUT</legend><div class="checkout-grid"><label class="span-two">Name on card<input name="cardholder" autocomplete="cc-name" required></label><label class="span-two">Card number<input name="cardNumber" inputmode="numeric" autocomplete="cc-number" minlength="12" maxlength="23" placeholder="4242 4242 4242 4242" required></label><label>Expiry<input name="expiry" autocomplete="cc-exp" placeholder="MM / YY" required></label><label>Security code<input name="cvv" inputmode="numeric" autocomplete="cc-csc" minlength="3" maxlength="4" required></label></div><p class="form-hint">Demo checkout: card details are used only for client-side validation and are never transmitted or stored. No payment is processed.</p></fieldset>
+    <div class="subtotal"><span>Order total</span><strong id="checkout-total">$0.00</strong></div><button class="button button-blue full-width" type="submit">Place demo order <span>→</span></button>
+  </form></div></section></div>
+
+  <div class="overlay hidden" id="manager-modal"><section class="modal manager-modal"><button class="modal-close" data-close="manager-modal" aria-label="Close">×</button><div class="manager-head"><div><p class="eyebrow">SNEAKYLINK / INVENTORY</p><h2>On the <span>floor.</span></h2></div><button id="manager-signout" class="text-btn">Sign out ↗</button></div><div id="manager-orders" class="orders-strip"></div><div class="inventory-table-wrap"><table><thead><tr><th>STYLE</th><th>BRAND</th><th>TYPE</th><th>COLORWAY</th><th>MATERIAL</th><th>SIZES</th><th>PRICE</th><th>STOCK</th><th>IMAGE URL</th><th>DESCRIPTION</th><th></th></tr></thead><tbody id="inventory-body"></tbody></table></div></section></div>
+  <div class="toast hidden" id="toast" role="status"></div>
+</body>
+</html>
